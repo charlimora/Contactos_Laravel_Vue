@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return Contact::get();
     }
 
     /**
@@ -34,9 +34,9 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show(Contact $contacto)
     {
-        //
+        return $contacto;
     }
 
     /**
