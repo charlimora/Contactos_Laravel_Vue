@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="contacto in contacts" :key="contacto.id">
+                <tr v-for="contacto in contactazos" :key="contacto.id">
                 <th scope="row">{{ contacto.id }}</th>
                 <td>{{ contacto.nombre }}</td>
                 <td>{{ contacto.apellido }}</td>
@@ -32,17 +32,17 @@
     export default {
         data() {
             return {
-                contacts: [],
+                contactazos: [], //no importa cómo bauticemos el array
             }
         },
         methods: {
             async listado() {
-                const res = await axios.get('contactos')
-                this.contacts = res.data
+                const respuesta = await axios.get('contactos')  //un await solo puede ir dentro de un async
+                this.contactazos = respuesta.data  //en todos los casos se debe poner .data a la respuesta para poder ver correctamente los datos
             }
         },
         created() {
-            this.listado()
+            this.listado()    //con created() se carga la función o los datos tan pronto se inicializa la página sin oprimir ningún botón
         },
     }
 </script>
