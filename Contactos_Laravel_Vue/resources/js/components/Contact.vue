@@ -37,12 +37,14 @@
         },
         methods: {
             async listado() {
-                const respuesta = await axios.get('contactos')  //un await solo puede ir dentro de un async
+                const respuesta = await axios.get('contactos')  //un await solo puede ir dentro
+                                                                //de un async
                 this.contactazos = respuesta.data  //en todos los casos se debe poner .data a la respuesta para poder ver correctamente los datos
             }
         },
         created() {
-            this.listado()    //con created() se carga la función o los datos tan pronto se inicializa la página sin oprimir ningún botón
+            this.listado()    //con created() se carga la función o los datos tan pronto
+                              //se inicializa la página sin oprimir ningún botón
         },
     }
 </script>
