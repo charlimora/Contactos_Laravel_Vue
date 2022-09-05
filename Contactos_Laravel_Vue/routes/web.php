@@ -25,5 +25,3 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::apiResource('/contactos', ContactController::class);
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
