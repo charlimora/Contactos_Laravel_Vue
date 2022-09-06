@@ -19,11 +19,30 @@
                     <button @click="closeModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div class="form-group">
+                      <label for="nombre">Nombre</label>
+                      <input v-model="contacto.nombre" type="text" name="" id="nombre" class="form-control" placeholder="Nombre del contacto">
+                    </div>
+                    <div class="form-group">
+                      <label for="apellido">Apellido</label>
+                      <input v-model="contacto.apellido" type="text" name="" id="apellido" class="form-control" placeholder="Apellido contacto">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Corrreo electrónico</label>
+                      <input v-model="contacto.email" type="email" name="" id="email" class="form-control" placeholder="Email del contacto">
+                    </div>
+                    <div class="form-group">
+                      <label for="tele">Teléfono</label>
+                      <input v-model="contacto.tele" type="number" name="" id="tele" class="form-control" placeholder="Celular del contacto">
+                    </div>
+                    <div class="form-group">
+                      <label for="direccion">Dirección</label>
+                      <input v-model="contacto.direccion" type="text" name="" id="direccion" class="form-control" placeholder="Dirección del contacto">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button @click="closeModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success">Guardar cambios</button>
+                    <button @click="guardar()" type="button" class="btn btn-success">Guardar cambios</button>
                 </div>
                 </div>
             </div>
@@ -51,7 +70,7 @@
                 <td>{{ contacto.tele }}</td>
                 <td>{{ contacto.direccion }}</td>
                 <td>
-                    <button @click="update=true; openModal(contacto.id)" class="btn btn-warning">Editar</button>
+                    <button @click="update=true; openModal(contacto)" class="btn btn-warning">Editar</button>
                 </td>
                 <td>
                     <button @click="eliminar(contacto.id)" class="btn btn-danger">Eliminar</button>
@@ -67,6 +86,13 @@
     export default {
         data() {
             return {
+                contacto: {
+                    nombre: '',
+                    apellido: '',
+                    email: '',
+                    tele: null,
+                    direccion: ''
+                },
                 update:true,
                 modal: 0, /*si el modal está cerrado será 0 y si está abierto será 1.Por default
                            lo inicializamos en 0 que significa false */
@@ -85,12 +111,25 @@
                                                                 //de un async
                 this.listar() //con esto no tendremos que estar actualizando el navegador
             },
-            openModal(id=0) {
+            async guardar(id){
+                if(this.update){ //si el atributo update es true. Aplica para botón Editar
+
+                } else {    //si el atributo update es false. Aplica para botón Crear nuevo
+                    const respuesta = await axios.post('/contactos', this.contacto)
+                }
+                this.closeModal()
+                this.listar()
+            },
+
+            openModal(datos = {}) {
                 this.modal = 1
                 if(this.update){
+                    this.contacto = datos
                     this.tituloModal = "Modificar contacto"
+
                 }else{
                     this.tituloModal = "Crear contacto"
+                    return this.contacto
                 }
             },
 
