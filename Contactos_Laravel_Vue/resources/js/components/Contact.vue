@@ -21,23 +21,28 @@
                 <div class="modal-body">
                     <div class="form-group">
                       <label for="nombre">Nombre</label>
-                      <input v-model="contacto.nombre" type="text" name="" id="nombre" class="form-control" placeholder="Nombre del contacto">
+                      <input v-model="contacto.nombre" type="text" name="" id="nombre"
+                      class="form-control" placeholder="Nombre del contacto">
                     </div>
                     <div class="form-group">
                       <label for="apellido">Apellido</label>
-                      <input v-model="contacto.apellido" type="text" name="" id="apellido" class="form-control" placeholder="Apellido contacto">
+                      <input v-model="contacto.apellido" type="text" name="" id="apellido"
+                      class="form-control" placeholder="Apellido contacto">
                     </div>
                     <div class="form-group">
                       <label for="email">Corrreo electrónico</label>
-                      <input v-model="contacto.email" type="email" name="" id="email" class="form-control" placeholder="Email del contacto">
+                      <input v-model="contacto.email" type="email" name="" id="email"
+                      class="form-control" placeholder="Email del contacto">
                     </div>
                     <div class="form-group">
                       <label for="tele">Teléfono</label>
-                      <input v-model="contacto.tele" type="number" name="" id="tele" class="form-control" placeholder="Celular del contacto">
+                      <input v-model="contacto.tele" type="number" name="" id="tele"
+                      class="form-control" placeholder="Celular del contacto">
                     </div>
                     <div class="form-group">
                       <label for="direccion">Dirección</label>
-                      <input v-model="contacto.direccion" type="text" name="" id="direccion" class="form-control" placeholder="Dirección del contacto">
+                      <input v-model="contacto.direccion" type="text" name="" id="direccion"
+                      class="form-control" placeholder="Dirección del contacto">
                     </div>
                 </div>
                 <div class="modal-footer">
